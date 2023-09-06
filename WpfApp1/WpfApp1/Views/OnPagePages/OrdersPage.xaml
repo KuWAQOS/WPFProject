@@ -1,0 +1,143 @@
+﻿<Page x:Class="WpfApp1.Views.OnPagePages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Views.OnPagePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrdersPage">
+
+    <Grid Background="#EFFFFF">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Grid.Column="0">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    Text="Список заказов к выполнению"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1">
+                <DataGrid
+                    IsReadOnly="False"
+                    x:Name="OrdersGrid"
+                AutoGenerateColumns="False"
+                    CanUserAddRows="True"
+                    CanUserDeleteRows="True"
+                Grid.Row="1"
+                Grid.Column="1"
+                ColumnWidth="*"
+                RowHeaderWidth="0"
+                FontSize="20">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="№ заказа" Binding="{Binding OrderId}"/>
+                        <DataGridTextColumn Header="ФИО клиента" Binding="{Binding ClientName}"/>
+                        <DataGridTextColumn Header="ID товара" Binding="{Binding ProdId}"/>
+                        <DataGridTextColumn Header="Количество товаров" Binding="{Binding ProdCount}"/>
+                        <DataGridTextColumn Header="Дата создания заказа" Binding="{Binding DateOfCreate}"/>
+                        <DataGridTextColumn Header="Сумма заказа" Binding="{Binding OrderSum}"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+            <Button
+                Grid.Column="2"
+                Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="30"
+                    Width="30"
+                    Background="#F9F9F9"
+                    Click="CloseButton_Click"
+                    >
+                <Image Source="/Views/Icons/close.png"/>
+            </Button>
+
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="0"
+                Click="LoadButton_Click"
+                Height="30"
+                Background="#B0F8F8"
+                Width="145"
+                >
+                    <TextBlock
+                    FontSize="20"
+                    Text="Сформировать"
+                    />
+                </Button>
+                <Button
+                    Grid.Row="1"
+                Click="DoneButton_Click"
+                Height="30"
+                Background="#B0F8F8"
+                Width="145"
+                >
+                    <TextBlock
+                    FontSize="20"
+                    Text="Выполнить"
+                    />
+                </Button>
+                <Button
+                    Grid.Row="2"
+                Click="EditOrderButton_Click"
+                Height="30"
+                Background="#B0F8F8"
+                Width="145"
+                >
+                    <TextBlock
+                    FontSize="20"
+                    Text="Редактировать"
+                    />
+                </Button>
+                <Button
+                    Grid.Row="3"
+                Click="DeleteOrderButton_Click"
+                Height="30"
+                Background="#B0F8F8"
+                Width="145"
+                >
+                    <TextBlock
+                    FontSize="20"
+                    Text="Удалить"
+                    />
+                </Button>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

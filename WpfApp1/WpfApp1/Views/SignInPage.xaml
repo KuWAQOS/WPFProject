@@ -1,0 +1,120 @@
+﻿<Page x:Class="WpfApp1.Views.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="Page1">
+
+    <Grid Background="LightBlue" >
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Авторизация в системе"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       FontSize="28"
+                       FontStyle="Italic"
+                       FontWeight="Bold"/>
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock 
+                Text="Имя пользователя"
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                FontSize="24"
+                FontWeight="Bold"
+                Margin="0, 15"/>
+                <TextBox
+                    x:Name="LogTB"
+                Grid.Row="1"
+                Padding="0,5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="30"
+                Height="50"
+                Width="360"
+                />
+                <TextBlock 
+                Text="Пароль"
+                Margin="0, 15"
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                FontSize="24"
+                FontWeight="Bold"
+                Width="101"/>
+                <TextBlock IsHitTestVisible="False"
+                           FontSize="24"
+                           Text="Логин"
+                           Grid.Row="1"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"
+                           Foreground="Gray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=LogTB}" Value="">
+                                    <Setter Property="Visibility"
+                                            Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <PasswordBox x:Name="PasTB"
+             Grid.Row="3"
+             Padding="0,5"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             FontSize="30"
+             Height="50"
+             Width="360"
+             PasswordChar="*"
+             GotFocus="PasTB_GotFocus"
+             LostFocus="PasTB_LostFocus"/>
+                <TextBlock x:Name="PasswordLabel"
+           IsHitTestVisible="False"
+           FontSize="24"
+           Text="Пароль"
+           Grid.Row="3"
+           VerticalAlignment="Center"
+           Margin="10,0,0,0"
+           Foreground="Gray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Password.Length, ElementName=PasTB}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsFocused, ElementName=PasTB}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+            </Grid>
+            <Button
+                x:Name="LoginBtn"
+                Background="#9694F9"
+                Height="50"
+                Width="160"
+                Margin="0,25"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Войти"
+                FontSize="26"
+                Click="LoginBtn_Click"
+                />
+        </StackPanel>
+    </Grid>
+</Page>
